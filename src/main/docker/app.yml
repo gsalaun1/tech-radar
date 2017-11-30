@@ -1,0 +1,14 @@
+version: '2'
+services:
+    techradar-app:
+        image: techradar
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://techradar-mysql:3306/techradar?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    techradar-mysql:
+        extends:
+            file: mysql.yml
+            service: techradar-mysql
